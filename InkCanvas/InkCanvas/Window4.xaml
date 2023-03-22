@@ -1,0 +1,16 @@
+﻿<Window x:Class="InkCanvas.Window4"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="04.ペンの太さ/形状を設定する" Height="313" Width="400" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Height="18" Name="TextBlock1" Text="ペンの形状：" TextAlignment="Right" Width="82" />
+            <RadioButton Content="●" Height="16" Name="radioButton1" IsChecked="True" Checked="radioButton1_Checked" />
+            <RadioButton Content="■" Height="16" Name="radioButton2" Checked="radioButton2_Checked" />
+            <TextBlock Height="18" Name="TextBlock2" Text="太さ:" VerticalAlignment="Center" HorizontalAlignment="Right" Width="48" TextAlignment="Right" />
+            <TextBox Height="24" Name="txtWidth" Width="33" Text="{Binding ElementName=slider1, Path=Value, Mode=TwoWay}" />
+            <Slider Height="23" Name="slider1" Width="107" Minimum="1" SmallChange="1" IsSnapToTickEnabled="True" Maximum="20" ValueChanged="slider1_ValueChanged" />
+        </StackPanel>
+        <InkCanvas Name="inkCanvas1" EditingMode="Ink" />
+    </StackPanel>
+</Window>

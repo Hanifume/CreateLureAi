@@ -1,0 +1,16 @@
+﻿<Window x:Class="InkCanvas.Window6"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="06.滑らかな線を描く" Height="313" Width="400" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <RadioButton Height="16" Margin="5" Content="通常の線" Name="rdoFitToCurveOff" Checked="rdoFitToCurveOff_Checked" />
+            <RadioButton Height="16" Margin="5" Content="滑らかな線" Name="rdoFitToCurveOn" Checked="rdoFitToCurveOn_Checked" />
+        </StackPanel>
+        <InkCanvas Name="inkCanvas1" EditingMode="Ink">
+            <InkCanvas.DefaultDrawingAttributes>
+                <DrawingAttributes FitToCurve="True" />
+            </InkCanvas.DefaultDrawingAttributes>
+        </InkCanvas>
+    </StackPanel>
+</Window>

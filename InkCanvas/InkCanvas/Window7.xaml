@@ -1,0 +1,6 @@
+﻿<Window x:Class="InkCanvas.Window7"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="07.ジェスチャを認識する" Height="300" Width="372" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <InkCanvas Name="inkCanvas1" EditingMode="inkAndGesture" Gesture="inkCanvas1_Gesture" />
+</Window>

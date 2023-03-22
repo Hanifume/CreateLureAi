@@ -1,0 +1,20 @@
+﻿<Window x:Class="InkCanvas.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="InkCanvas コントロール" Height="507" Width="447" WindowStartupLocation="CenterScreen">
+    <StackPanel>
+        <Button Content="01.インクを使用する" FontSize="14" Height="29" HorizontalContentAlignment="Left" Name="button1" Click="button1_Click" />
+        <Button Content="02.描画されたストロークを消去する" FontSize="14" Height="29" HorizontalContentAlignment="Left" Name="button2" Click="button2_Click" />
+        <Button Content="03.描画されたストロークを選択する" FontSize="14" Height="29" HorizontalContentAlignment="Left" Name="button3" Click="button3_Click" />
+        <Button Content="04.ペンの太さ/形状を設定する" FontSize="14" Height="29" HorizontalContentAlignment="Left" Name="button4" Click="button4_Click" />
+        <Button Content="05.ペンの色を変更する" FontSize="14" Height="29" HorizontalContentAlignment="Left" Name="button5" Click="button5_Click" />
+        <Button Content="06.滑らかな線を描く" FontSize="14" Height="29" HorizontalContentAlignment="Left" Name="button6" Click="button6_Click" />
+        <Button Content="07.ジェスチャを認識する" FontSize="14" Height="29" HorizontalContentAlignment="Left" Name="button7" Click="button7_Click" />
+        <Button Content="08.ジェスチャで認識した情報をもとに図形を描画する" FontSize="14" Height="29" HorizontalContentAlignment="Left" Name="button8" Click="button8_Click" />
+        <Button Content="09.キャンバスに書いた文字を認識する" FontSize="14" Height="29" HorizontalContentAlignment="Left" Name="button9" Click="button9_Click" />
+        <Button Content="10.クリップボードを使用する" FontSize="14" Height="29" HorizontalContentAlignment="Left" Name="button10" Click="button10_Click" />
+        <Button Content="11.キャンバスに描いた絵を画像ファイルとして保存する" FontSize="14" Height="29" HorizontalContentAlignment="Left" Name="button11" Click="button11_Click" />
+        <Button Content="12.InkSerializedFormat 形式で保存/読み込みをする" FontSize="14" Height="29" HorizontalContentAlignment="Left" Name="button12" Click="button12_Click" />
+        <Button Content="13.ストロークをXAML要素として保存する" FontSize="14" Height="29" HorizontalContentAlignment="Left" Name="button13" Click="button13_Click" />
+    </StackPanel>
+</Window>

@@ -1,0 +1,12 @@
+﻿<Window x:Class="InkCanvas.Window12"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="12.InkSerializedFormat 形式で保存/読み込みをする"  Height="321" Width="427" WindowStartupLocation="CenterScreen">
+    <StackPanel Name="parentStack">
+        <StackPanel Orientation="Horizontal" Name="menuStack">
+            <Button Name="btnSaveAsISF" Content="ISF形式で保存" Click="btnSaveAsISF_Click" />
+            <Button Name="btnOpenISF" Content="ISF形式ファイルを開く" Click="btnOpenISF_Click" />
+        </StackPanel>
+        <InkCanvas Name="inkCanvas1" EditingMode="Ink" />
+    </StackPanel>
+</Window>

@@ -1,0 +1,198 @@
+﻿<Window x:Class="InkCanvas.Window5"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AIDraw" Height="1080" Width="1920" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded"
+        WindowStyle="SingleBorderWindow"
+        MaxHeight="1080"
+        MaxWidth="1920">
+    <StackPanel>
+        <Grid Height="300">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="ペンの種類" HorizontalAlignment="Left" Grid.Column="0" FontSize="20">
+                <StackPanel Orientation="Vertical">
+                    <RadioButton Content="通常ペン" VerticalContentAlignment="Center" Margin="5" Name="radioNormalPen" Checked="radioNormalPen_Checked"  FontSize="20" GroupName="Pen"/>
+                    <RadioButton Content="消しゴム（点）" VerticalContentAlignment="Center" Margin="5" Name="radioPointEracerPen" Checked="RadioPointEracerPen_Checked"  FontSize="20"
+                                           GroupName="Pen"/>
+                    <RadioButton Content="消しゴム（線）" VerticalContentAlignment="Center" Margin="5" Name="radioStrokeEracerPen" Checked="RadioPointEracerPen_Checked"  FontSize="20"
+                                            GroupName="Pen"/>
+                    <Slider  Orientation="Vertical"  HorizontalAlignment="Center" 
+                                 Minimum="5" Maximum="50" Height="120" Name="sliderPenWidth"
+                                 ValueChanged="SliderPenWidth_ValueChanged"
+                                 Margin="0,5,0,5"/>
+                    <TextBlock Grid.Row="2" Margin="5" Text="{Binding Path=Value,ElementName=sliderPenWidth}" FontSize="20"
+                                       TextAlignment="Center"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="ペン先の種類" HorizontalAlignment="Left" Grid.Column="1" Margin="5,0,5,0" FontSize="20">
+                <StackPanel Orientation="Vertical">
+                    <RadioButton Content="□" VerticalContentAlignment="Center" Margin="5" Name="radioRectanglePen" Checked="RadioRectanglePen_Checked"  FontSize="20" IsChecked="True"/>
+                    <RadioButton Content="○" VerticalContentAlignment="Center" Margin="5" Name="radioCirclePen" Checked="RadioCirclePen_Checked" FontSize="20" />
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="ペン色(ARGB)" Grid.Column="2" Margin="5,0,5,0" FontSize="20">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" FontSize="20"
+                                      HorizontalAlignment="Left" Margin="5,0,0,0" Name="TextBlock1" Text="アルファ" VerticalAlignment="Top" />
+                    <Slider Name="sliderA" Margin="5,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="290" Grid.Column="1" Grid.Row="0"
+                                Minimum="0" Maximum="255" ValueChanged="slider_ValueChanged" />
+                    <!--Color Red-->
+                    <TextBlock Grid.Row="1" Grid.Column="0"  FontSize="20"
+                                      HorizontalAlignment="Left" Margin="5,0,0,0" Name="TextBlock2" Text="赤" VerticalAlignment="Center" />
+                    <Slider Name="sliderR" Margin="5,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="290" Grid.Column="1" Grid.Row="1"
+                                 Minimum="0" Maximum="255" ValueChanged="slider_ValueChanged" />
+                    <!--Color Green-->
+                    <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0" Name="TextBlock3" Text="緑" VerticalAlignment="Center" 
+                                      Grid.Column="0" Grid.Row="2" FontSize="20"/>
+                    <Slider Name="sliderG" Margin="5,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="290"
+                                 Minimum="0" Maximum="255" ValueChanged="slider_ValueChanged"
+                                 Grid.Column="1" Grid.Row="2"/>
+                    <!--Color Blue-->
+                    <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0" Name="TextBlock4" Text="青" VerticalAlignment="Center" 
+                                      Grid.Column="0" Grid.Row="3" FontSize="20"/>
+                    <Slider Name="sliderB" Margin="5,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="290"
+                                Minimum="0" Maximum="255" ValueChanged="slider_ValueChanged"
+                                Grid.Column="1" Grid.Row="3"/>
+                    <StackPanel Name="ColorPanel" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4"
+                                         Margin="5" Background="Black"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="ペン色(キーワード)" Grid.Column="3" Margin="5,0,5,0" Width="340" FontSize="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="0" Margin="2.5,0,2.5,0" Name="txtSearchWord" FontSize="20"/>
+                        <Button Grid.Column="1" Margin="2.5,0,2.5,0" Name="KeywordSearch"
+                                      Content="検索" Click="KeywordSearch_Click" FontSize="20"/>
+                        <Button Grid.Column="2" Margin="2.5,0,2.5,0" Name="KeywordSearchClear"
+                                      Content="クリア" Click="KeywordSearchClear_Click" FontSize="20"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <ListBox Name="KeyWordColors"  Margin="2.5">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Label Content="{Binding PantoneColorCode}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                                         Height="50" Width="Auto"
+                                                         FontSize="20"
+                                                         MouseDown="Label_MouseDown"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="ペン色(パントーン)" Grid.Column="4" Margin="5,0,5,0" Width="340"  FontSize="20">
+                <StackPanel Orientation="Vertical">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Grid.Column="0" Margin="2.5,0,2.5,0" FontSize="20" Name="txtPantoneSearch"/>
+                            <Button Grid.Column="1" Margin="2.5,0,2.5,0" FontSize="20" Name="btnPantonSearch"
+                                          Content="検索" Click="BtnPantonSearch_Click"/>
+                            <Button Grid.Column="2" Margin="2.5,0,2.5,0" Name="PantonSearchClear"
+                                      Content="クリア" Click="PantonSearchClear_Click" FontSize="20"/>
+
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <ListBox Name="PantonColors"
+                                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                          Margin="2.5">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Label Content="{Binding PantoneColorCode}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                                         Height="50" Width="Auto"
+                                                         FontSize="20"
+                                                         MouseDown="Label_MouseDown"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Grid>
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+        <Grid Height="620" Margin="0,10,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="974*"/>
+                <ColumnDefinition Width="939*"/>
+            </Grid.ColumnDefinitions>
+            <TabControl Grid.ColumnSpan="2" Margin="0,0,0.333,0"  Name="tabList" MouseRightButtonDown="InkCanvas1_MouseRightButtonDown">
+                <TabItem Header="横" FontSize="20" Name="tabSide" >
+                    <InkCanvas Name="inkCanvas1" EditingMode="Ink" Background="Transparent" Tag="rula_side"
+                                        Width="584" Height="115"
+                                        Gesture="inkCanvas_Gesture"
+                                        />
+                </TabItem>
+                <TabItem Header="上" FontSize="20" Name="tabUp">
+                    <InkCanvas Name="inkCanvas2" EditingMode="Ink" Background="Transparent" Tag="rula_top"
+                                        Width="603" Height="72"
+                                        Gesture="inkCanvas_Gesture"/>
+                </TabItem>
+                <TabItem Header="下" FontSize="20" Name="tabBottom">
+                    <InkCanvas Name="inkCanvas3" EditingMode="Ink" Background="Transparent" Tag="rula_under"
+                                        Width="603" Height="72"
+                                        Gesture="inkCanvas_Gesture"/>
+                </TabItem>
+                <TabItem Header="前" FontSize="20" Name="tabFront">
+                    <InkCanvas Name="inkCanvas4" EditingMode="Ink" Background="Transparent" Tag="rula_front"
+                                        Gesture="inkCanvas_Gesture"
+                                        Width="325" Height="533"/>
+                </TabItem>
+                <TabItem Header="後"  FontSize="20" Name="tabRear">
+                    <InkCanvas Name="inkCanvas5" EditingMode="Ink" Background="Transparent"  Tag="rula_rear"
+                                        Gesture="inkCanvas_Gesture"
+                                        Width="325" Height="533"/>
+                </TabItem>
+            </TabControl>
+        </Grid>
+        <Grid Height="100" VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="閉じる"  Width="250" Grid.Column="0" HorizontalAlignment="Left" Margin="10,5,10,5" Name="btnClose" Click="BtnClose_Click" FontSize="20"/>
+
+            <Button  Grid.Column="1" Width="250" Content="元に戻す" HorizontalAlignment="Center" VerticalContentAlignment="Center" Margin="10,5,10,5" Name="btnUndo" Click="Undo" FontSize="20"/>
+
+            <Button Content="保存"   Width="250" Grid.Column="2" HorizontalAlignment="Right" Margin="10,5,10,5" Name="btnSave" Click="BtnSave_Click" FontSize="20"/>
+        </Grid>
+    </StackPanel>
+</Window>

@@ -1,0 +1,14 @@
+﻿<Window x:Class="InkCanvas.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="02.描画されたストロークを消去する" Height="313" Width="400" WindowStartupLocation="CenterScreen">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button Name="btnInk" Content="インク" Click="btnInk_Click" />
+            <Button Name="btnEraseByPoint" Content="ポイント消しゴム" Click="btnEraseByPoint_Click" />
+            <Button Name="btnEraseByStroke" Content="ストローク消しゴム" Click="btnEraseByStroke_Click" />
+            <Button Name="btnAllClear" Content="ストローク全消去" Height="23" Width="109" Click="btnAllClear_Click" />
+        </StackPanel>
+        <InkCanvas Name="inkCanvas1" EditingMode="Ink" />
+    </StackPanel>
+</Window>

@@ -1,0 +1,14 @@
+﻿<Window x:Class="InkCanvas.Window10"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="10.クリップボードを使用する" Height="321" Width="427" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button Name="btnInk" Content="インク" Click="btnInk_Click" />
+            <Button Name="btnSelect" Content="選択" Click="btnSelect_Click" />
+            <Button Name="btnCopy" Content="コピー" Margin="5,0,0,0" Click="btnCopy_Click" />
+            <Button Name="btnCut" Content="カット" Click="btnCut_Click" />
+        </StackPanel>
+        <InkCanvas Name="inkCanvas1" EditingMode="Ink" PreviewMouseDown="inkCanvas1_PreviewMouseDown" />
+    </StackPanel>
+</Window>
